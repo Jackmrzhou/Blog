@@ -4,20 +4,24 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{{blog_name}}</title>
+	<title>Jack's Blog</title>
 	<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/static/personal/blog.css">
 </head>
 <body background="/static/pics/bgd.png">	
-	<div class="main-container">
-		{% block head_content %}
-		{% endblock %}
-
-		{% block body_content %}
-		{% endblock %}
-
-		{% block foot_content %}
-		{% endblock %}
+	<div class="container" style="min-height: 100%;">
+		<div class="row" style="height: 100%;">
+			<div class="col-md-8 col-md-offset-2" style="background-color: whitesmoke; padding: 0;">
+				{% block head_content %}
+				{% endblock %}
+				<div class="blog-content">
+					{% block body_content %}
+					{% endblock %}
+				</div>
+				{% block foot_content %}
+				{% endblock %}
+			</div>
+		</div>
 	</div>
 	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>

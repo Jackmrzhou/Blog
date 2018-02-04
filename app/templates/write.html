@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{% include "common_head.html" %}
+{% endblock %}
+
+{% block body_content %}
+<form method="POST">
+	{{form.hidden_tag()}}
+	<div>
+		<center>
+			<div class="input-group">
+				{{form.title(class="form-control", placeholder="Title", style="width:auto")}}
+				{{form.category(class="form-control", style="width:auto")}}
+			</div>
+		</center>
+	</div>
+	<br>
+	<div>
+		<center>
+			{{form.content(class="form-control", placeholder="Content",style="width:80%", rows="12")}}
+		</center>
+	</div>
+	<br>
+	<center>
+		<p>	
+			<input class="btn btn-lg btn-success btn-block" type="submit" name="login" style="width: 25%" value="Post">
+		</p>
+	</center>
+</form>
+{% endblock %}
+
+{% block foot_content %}
+{% include "common_footer.html" %}
+{% endblock %}

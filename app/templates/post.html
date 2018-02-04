@@ -5,15 +5,15 @@
 {% endblock %}
 
 {% block body_content %}
-<center>
-	{% for p in posts %}
-		<div class="post-feed">
-			<h3>{{p.title}}</h3><br>
-			{{p.content}}
-		</div>
-	{% endfor %}
-</center>
-<br>
+<div class="container">
+	<center>
+		<h2>
+			{{post.title}}
+		</h2>
+	</center>
+	<br>
+	{{post.content}}
+</div>
 {% endblock %}
 
 {% block foot_content %}
