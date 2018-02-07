@@ -13,9 +13,14 @@
 				{{form.title(class="form-control", placeholder="Title", style="width:auto")}}
 				{{form.category(class="form-control", style="width:auto")}}
 			</div>
+			<div class="checkbox">
+				<label>
+					{{form.is_md()}}
+					<strong>Markdown</strong>
+				</label>
+			</div>
 		</center>
 	</div>
-	<br>
 	<div>
 		<center>
 			{{form.content(class="form-control", placeholder="Content",style="width:80%", rows="12")}}

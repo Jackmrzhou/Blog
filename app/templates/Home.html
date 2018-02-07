@@ -9,7 +9,7 @@
 	{% for p in posts %}
 		<div class="post-feed">
 			<h3>{{p.title}}</h3><br>
-			{{p.content}}
+			{{p.content | safe}}
 		</div>
 	{% endfor %}
 </center>

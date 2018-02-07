@@ -5,14 +5,16 @@
 {% endblock %}
 
 {% block body_content %}
-<div class="container">
+<div>
 	<center>
 		<h2>
 			{{post.title}}
 		</h2>
 	</center>
 	<br>
-	{{post.content}}
+	<div class="post-content">
+		{{post.content | safe}}
+	</div>
 </div>
 {% endblock %}
 

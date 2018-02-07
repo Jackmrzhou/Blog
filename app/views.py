@@ -3,6 +3,8 @@ from app.model import *
 from flask import render_template,redirect
 from app import forms
 from flask_login import current_user, login_user, logout_user, login_required
+from markdown import markdown
+from uti import convert_to_html
 
 @app.route('/')
 def Home():
@@ -45,7 +47,7 @@ def write():
 	if form.is_submitted():
 		if form.validate():
 			p = Post(title = form.title.data, 
-				content = form.content.data, 
+				content = markdown(form.content.data) if form.is_md.data else convert_to_html(form.content.data), 
 				category = Category.query.filter_by(name = form.category.data).first())
 			db.session.add(p)
 			db.session.commit()
@@ -57,3 +59,7 @@ def write():
 def logout():
 	logout_user()
 	return redirect("/")
+
+@app.route("/p/<post_id>")
+def post(post_id):
+	return render_template("post.html", post = Post.query.filter_by(id = int(post_id)).first())
