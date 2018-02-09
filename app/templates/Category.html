@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{% include "common_head.html" %}
+{% endblock %}
+
+{% block body_content %}
+<div class="category">
+	{% for c in Category %}
+	<h3>{{c.name}}</h3>
+	<ul>
+		{% for p in c.posts %}
+			<li><a href="/p/{{p.id}}">{{p.title}}</a></li>
+		{% endfor %}
+	</ul>
+	{% endfor %}
+</div>
+{% endblock %}
+
+{% block foot_content %}
+{% include "common_footer.html" %}
+{% endblock %}

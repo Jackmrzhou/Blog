@@ -1,6 +1,6 @@
 from app import app
 from app.model import *
-from flask import render_template,redirect
+from flask import render_template,redirect, flash
 from app import forms
 from flask_login import current_user, login_user, logout_user, login_required
 from markdown import markdown
@@ -63,3 +63,11 @@ def logout():
 @app.route("/p/<post_id>")
 def post(post_id):
 	return render_template("post.html", post = Post.query.filter_by(id = int(post_id)).first())
+
+@app.route("/Category")
+def category():
+	return render_template("Category.html", Category = Category.query.all())
+
+@app.route("/AboutMe")
+def aboutme():
+	return render_template("AboutMe.html")

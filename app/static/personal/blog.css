@@ -19,6 +19,8 @@ div.blog-content{
 }
 
 div.post-feed{
+	margin-left: 15px;
+	margin-right: 15px;
 	padding-bottom: 15px;
 	border-bottom: 1px solid gainsboro;
 }
@@ -33,4 +35,19 @@ div.post-content{
 	margin-left: 15px;
 	margin-right: 15px;
 	margin-bottom: 20px;
+}
+
+div.category{
+	position: relative;
+	margin-left: 27%;
+}
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
 }
