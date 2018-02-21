@@ -16,6 +16,7 @@ class Post(db.Model):
 	title = db.Column(db.String(100), nullable = False)
 	content = db.Column(db.Text, nullable = False)
 	date = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+	content_type = db.Column(db.String(10), nullable = False)
 
 	category_id = db.Column(db.Integer, db.ForeignKey("category.id"), nullable = False)
 	category = db.relationship("Category", backref = db.backref("posts", lazy = True))

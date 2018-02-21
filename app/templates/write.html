@@ -23,13 +23,13 @@
 	</div>
 	<div>
 		<center>
-			{{form.content(class="form-control", placeholder="Content",style="width:80%", rows="12")}}
+			{{form.content(class="form-control", placeholder="Content",style="width:90%", rows="18")}}
 		</center>
 	</div>
 	<br>
 	<center>
 		<p>	
-			<input class="btn btn-lg btn-success btn-block" type="submit" name="login" style="width: 25%" value="Post">
+			<input class="btn btn-lg btn-success btn-block" type="submit" name="login" style="width: 25%" value="{{type}}">
 		</p>
 	</center>
 </form>
@@ -37,4 +37,7 @@
 
 {% block foot_content %}
 {% include "common_footer.html" %}
+{% if type == "Update" %}
+<script type="text/javascript">window.onload = render_form;</script>
+{% endif %}
 {% endblock %}

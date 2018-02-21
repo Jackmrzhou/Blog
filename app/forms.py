@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SelectField, BooleanField
+from wtforms import StringField, PasswordField, SelectField, BooleanField, SubmitField
 from wtforms.validators import Length
 from wtforms.widgets import TextArea
 
@@ -14,3 +14,6 @@ class PostForm(FlaskForm):
 	category = SelectField("category")
 	content = StringField("Content", widget=TextArea())
 	is_md = BooleanField("Markdown")
+
+class ManageForm(FlaskForm):
+	pass

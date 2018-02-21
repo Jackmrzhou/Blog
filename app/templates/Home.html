@@ -5,17 +5,16 @@
 {% endblock %}
 
 {% block body_content %}
-{% for p in posts %}
-	<div class="post-feed">
+	<!-- <div class="post-feed">
 		<center>
-			<h3>{{p.title}}</h3><br>
+			<div class="post-meta"></div>
 		</center>
-		{{p.content | safe}}
-	</div>
-{% endfor %}
+	</div> -->
+<div id="Main"></div>
 <br>
 {% endblock %}
 
 {% block foot_content %}
 {% include "common_footer.html" %}
+<script type="text/javascript">window.onload = Main;</script>
 {% endblock %}

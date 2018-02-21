@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+{% include "common_head.html" %}
+{% endblock %}
+
+{% block body_content %}
+<form id="ManageForm" method="POST">
+	{{form.hidden_tag()}}
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Post Name</th>
+					<th>Date</th>
+					<th>Operation</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for p in posts %}
+				<tr id="Manage{{p.id}}">
+					<td><a href="/p/{{p.id}}">{{p.title}}</a></td>
+					<td>{{p.date.month}}-{{p.date.day}}-{{p.date.year}}</td>
+					<td><input type="button" name="edit-{{p.id}}" value="Edit" class="btn btn-primary" onclick="jump_to_edit({{p.id}})">
+						<input type="submit" name="delete-{{p.id}}" value="Delete" class="btn btn-danger"></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</form>
+<div style="margin-bottom: 20px;">
+	<center>
+		<input type="button" name="new_post" value="New Post" class="btn btn-success" onclick="window.location.href = '/write';">
+	</center>
+</div>
+{% endblock %}
+
+{% block foot_content %}
+{% include "common_footer.html" %}
+{% endblock %}

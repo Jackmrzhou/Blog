@@ -5,19 +5,18 @@
 {% endblock %}
 
 {% block body_content %}
-<div>
-	<center>
-		<h2>
-			{{post.title}}
+<div id="Main">
+	<!-- <center>
+		<h2>	
 		</h2>
 	</center>
 	<br>
 	<div class="post-content">
-		{{post.content | safe}}
-	</div>
+	</div> -->
 </div>
 {% endblock %}
 
 {% block foot_content %}
 {% include "common_footer.html" %}
+<script type="text/javascript">window.onload = Get_Post;</script>
 {% endblock %}

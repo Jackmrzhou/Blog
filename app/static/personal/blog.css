@@ -19,10 +19,19 @@ div.blog-content{
 }
 
 div.post-feed{
+	position: relative;
+	margin-top: 20px;
 	margin-left: 15px;
 	margin-right: 15px;
-	padding-bottom: 15px;
+	margin-bottom: 15px;
 	border-bottom: 1px solid gainsboro;
+}
+
+div.post-body{
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
 footer.blog-footer{
@@ -35,6 +44,9 @@ div.post-content{
 	margin-left: 15px;
 	margin-right: 15px;
 	margin-bottom: 20px;
+	margin-top: 20px;
+	max-height: 300px;
+	overflow-y: hidden;
 }
 
 div.category{
@@ -50,4 +62,30 @@ div.category{
 
 .navbar .navbar-collapse {
   text-align: center;
+}
+
+ul.navbar-right li {
+	float: right;
+}
+
+div.post-meta{
+	padding: 2px 8px;
+	margin: 5px 0px 0px 0px;
+	border: 1px solid #ccc;
+	color: #666;
+	display: inline;
+}
+
+div.feed-mask{
+	position: relative;
+	margin-top: -250px;
+	height: 230px;
+	background: -moz-linear-gradient(bottom,rgba(255,255,255,.1),rgba(255,255,255,0));
+    background: -webkit-gradient(linear,0 top,0 bottom,from(rgba(255,255,255,0)),to(whitesmoke));
+    background: -o-linear-gradient(bottom,rgba(255,255,255,.1),rgba(255,255,255,0));
+}
+
+.read-more-pos{
+	position: relative;
+	margin-top: -30px;
 }
