@@ -22,8 +22,13 @@ def batch():
 		return jsonify(
 			{
 				"status":1,
-				"posts" : [{"id": p.id, "title":p.title, "content":p.content, "date": p.date}
-					for p in posts.items],
+				"posts" : [
+							{"id": p.id, 
+							"title":p.title, 
+							"content":p.content, 
+							"date": p.date,
+							"content_type" : p.content_type}
+								for p in posts.items],
 				"next" : posts.has_next
 			})
 	return jsonify({"status":0})

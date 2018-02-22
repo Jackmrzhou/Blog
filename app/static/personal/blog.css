@@ -45,7 +45,7 @@ div.post-content{
 	margin-right: 15px;
 	margin-bottom: 20px;
 	margin-top: 20px;
-	max-height: 300px;
+	max-height: 200px;
 	overflow-y: hidden;
 }
 
@@ -78,8 +78,8 @@ div.post-meta{
 
 div.feed-mask{
 	position: relative;
-	margin-top: -250px;
-	height: 230px;
+	margin-top: -220px;
+	height: 200px;
 	background: -moz-linear-gradient(bottom,rgba(255,255,255,.1),rgba(255,255,255,0));
     background: -webkit-gradient(linear,0 top,0 bottom,from(rgba(255,255,255,0)),to(whitesmoke));
     background: -o-linear-gradient(bottom,rgba(255,255,255,.1),rgba(255,255,255,0));

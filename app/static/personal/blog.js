@@ -14,7 +14,13 @@ function render_post(post){
             date.innerText = post.date.split(" ").splice(0,4).join(" ");
             var con = document.createElement("div");
             con.className = "post-body";
-            con.innerText = post.content;
+            if (post.content_type == "PlainText"){
+                con.innerText = post.content;
+            }
+            else{
+                var converter = new showdown.Converter();
+                con.innerHTML = converter.makeHtml(post.content);
+            }
             c.appendChild(title);
             c.appendChild(date);
             f.appendChild(c);
@@ -32,8 +38,9 @@ function Get_Post(){
 function render_feed(feed){
     $(document).ready(function(){
         if (feed.status){
+            var converter = new showdown.Converter();
             for(let p of feed.posts){
-                f = create_feed(p);
+                f = create_feed(p, converter);
                 $("#Main").append(f);
             }
         }
@@ -66,7 +73,7 @@ function Main(){
     this.render();
 
     $(window).scroll(function(){
-        if ($(document).height() - $(window).scrollTop() - $(window).height() < 100){
+        if ($(document).height() - $(window).scrollTop() - $(window).height() < 260){
             if (render_attr.continue_get && !render_attr.on_render){
                 render_attr.on_render = true;
                 render();
@@ -93,7 +100,7 @@ function render_form(){
     });
 }
 
-function create_feed(p){
+function create_feed(p, converter){
     var f = document.createElement("div");
     var content = document.createElement("div");
     var c = document.createElement("center");
@@ -109,7 +116,12 @@ function create_feed(p){
     f.id = "feed-" + String(p.id);
     content.className = "post-content";
     content.id = "content-" + String(p.id);
-    content.innerText = p.content;
+    if (p.content_type == "PlainText"){
+        content.innerText = p.content;
+    }
+    else{
+        content.innerHTML = converter.makeHtml(p.content);
+    }
     c.appendChild(t);
     c.appendChild(date);
     f.appendChild(c);
@@ -153,5 +165,8 @@ function read_more(id){
         content.after(create_mask(id));
         $("#btn-center-" + String(id)).remove();
         $("#feed-" + String(id)).append(create_btn(id));
+        $('html, body').animate({  
+            scrollTop: $("#feed-" + String(id)).offset().top
+        });
     };
 }

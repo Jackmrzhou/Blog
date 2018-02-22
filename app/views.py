@@ -1,14 +1,20 @@
 from app import app
 from app.model import *
-from flask import render_template,redirect, flash, request
+from flask import render_template,redirect, flash, request, send_from_directory
 from app import forms
 from flask_login import current_user, login_user, logout_user, login_required
 from markdown import markdown
 from util import convert_to_html
+import os
 
 @app.route('/')
 def Home():
 	return render_template("Home.html")
+
+@app.route("/favicon.ico")
+def favicon():
+	return send_from_directory(os.path.join(app.root_path, 'static/pics'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
