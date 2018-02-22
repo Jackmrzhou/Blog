@@ -18,7 +18,7 @@ function render_post(post){
                 con.innerText = post.content;
             }
             else{
-                var converter = new showdown.Converter();
+                var converter = new showdown.Converter({tables: true, strikethrough: true});
                 con.innerHTML = converter.makeHtml(post.content);
             }
             c.appendChild(title);
@@ -38,7 +38,7 @@ function Get_Post(){
 function render_feed(feed){
     $(document).ready(function(){
         if (feed.status){
-            var converter = new showdown.Converter();
+            var converter = new showdown.Converter({tables: true, strikethrough: true});
             for(let p of feed.posts){
                 f = create_feed(p, converter);
                 $("#Main").append(f);
