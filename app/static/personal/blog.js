@@ -26,6 +26,7 @@ function render_post(post){
             f.appendChild(c);
             f.appendChild(con);
             $("#Main").append(f);
+            $("#Main").append(render_comment(post.id, converter));
         }
     })
 }
@@ -169,4 +170,40 @@ function read_more(id){
             scrollTop: $("#feed-" + String(id)).offset().top
         });
     };
+}
+
+function render_comment(id, converter) {
+    $.get("/api/c/" + String(id), function (comments) {
+        if (comments.status) {
+            var a = document.createElement("div");
+            a.className = "comments";
+            var info = document.createElement("div");
+            info.className = "comment-info";
+            var sp = document.createElement("span");
+            sp.className = "label label-info comment-info";
+            sp.innerText = "All " + comments.comments.length + " Comments:";
+            info.appendChild(sp);
+            a.appendChild(info);
+            for (let c of comments.comments) {
+                var f = document.createElement("div");
+                f.className = "panel panel-info";
+                var name = document.createElement("div");
+                name.className = "panel-heading";
+                name.innerText = c.name;
+                var content = document.createElement("div");
+                content.className = "panel-body";
+                if (c.content_type == "PlainText") {
+                    content.innerText = c.content;
+                }
+                else {
+                    content.innerHTML = converter.makeHtml(c.content);
+                }
+                f.appendChild(name);
+                f.appendChild(content);
+                a.appendChild(f);
+            }
+            $("#Main").append(a);
+        }
+        $("#post-comment").css("display", "block");
+    })
 }

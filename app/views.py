@@ -85,9 +85,20 @@ def logout():
 	logout_user()
 	return redirect("/")
 
-@app.route("/p/<post_id>")
+@app.route("/p/<post_id>", methods = ["POST", "GET"])
 def post(post_id):
-	return render_template("post.html")
+	form = forms.CommentForm()
+	if form.validate_on_submit():
+		c = Comment(
+			name = form.name.data, 
+			content = form.content.data,
+			post = Post.query.filter_by(id = int(post_id)).first(),
+			content_type = "Markdown" if form.is_md.data else "PlainText"
+			)
+		db.session.add(c)
+		db.session.commit()
+		return redirect("/p/"+str(post_id))
+	return render_template("post.html", form = form)
 
 @app.route("/Category")
 def category():
@@ -107,6 +118,8 @@ def manage():
 			if  f[k] == 'Delete':
 				try:
 					p = Post.query.filter_by(id=int(k.split('-')[1])).first()
+					for c in p.comments:
+						db.session.delete(c)
 					db.session.delete(p)
 					db.session.commit()
 				except:

@@ -30,3 +30,16 @@ class Category(db.Model):
 
 	def __repr__(self):
 		return "<Category {}>".format(self.name)
+
+class Comment(db.Model):
+	id = db.Column(db.Integer, primary_key = True)
+	name = db.Column(db.String(32), nullable = False)
+	content = db.Column(db.Text, nullable = False)
+	date = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+	content_type = db.Column(db.String(10), nullable=False)
+
+	post_id = db.Column(db.Integer, db.ForeignKey("post.id"), nullable = False)
+	post = db.relationship("Post", backref = db.backref("comments", lazy = True))
+
+	def __repr__(self):
+		return "<Comment for {}>".format(self.post.name)

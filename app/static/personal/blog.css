@@ -93,3 +93,23 @@ div.feed-mask{
 img {
 	width: 100%;
 }
+
+div.post-body > hr{
+	border-top: 2px solid #999;
+}
+
+div.post-content > hr{
+	border-top: 2px solid #999;
+}
+
+div.comments{
+	position: relative;
+	margin: 30px 15px 15px 15px;
+}
+
+div.comment-info{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 24px;
+}
+

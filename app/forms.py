@@ -17,3 +17,9 @@ class PostForm(FlaskForm):
 
 class ManageForm(FlaskForm):
 	pass
+
+class CommentForm(FlaskForm):
+
+	name = StringField("Name", validators=[Length(min = 1, max = 32)])
+	content = StringField("Content", widget = TextArea())
+	is_md = BooleanField("Markdown")
