@@ -18,8 +18,10 @@ function render_post(post){
                 con.innerText = post.content;
             }
             else{
-                var converter = new showdown.Converter({tables: true, strikethrough: true});
-                con.innerHTML = converter.makeHtml(post.content);
+                var converter = new showdown.Converter({tables: true, 
+                                                        strikethrough: true,
+                                                        literalMidWordUnderscores : true});
+                con.innerHTML = converter.makeHtml(post.content.replace(/\\/g, "\\\\"));
             }
             c.appendChild(title);
             c.appendChild(date);
@@ -27,6 +29,7 @@ function render_post(post){
             f.appendChild(con);
             $("#Main").append(f);
             $("#Main").append(render_comment(post.id, converter));
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     })
 }
@@ -39,11 +42,14 @@ function Get_Post(){
 function render_feed(feed){
     $(document).ready(function(){
         if (feed.status){
-            var converter = new showdown.Converter({tables: true, strikethrough: true});
+            var converter = new showdown.Converter({tables: true, 
+                                                    strikethrough: true,
+                                                    literalMidWordUnderscores : true});
             for(let p of feed.posts){
                 f = create_feed(p, converter);
                 $("#Main").append(f);
             }
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
         render_attr.continue_get = feed.status && feed.next;
         render_attr.on_render = false;
@@ -121,7 +127,7 @@ function create_feed(p, converter){
         content.innerText = p.content;
     }
     else{
-        content.innerHTML = converter.makeHtml(p.content);
+        content.innerHTML = converter.makeHtml(p.content.replace(/\\/g, "\\\\"));
     }
     c.appendChild(t);
     c.appendChild(date);
@@ -196,7 +202,7 @@ function render_comment(id, converter) {
                     content.innerText = c.content;
                 }
                 else {
-                    content.innerHTML = converter.makeHtml(c.content);
+                    content.innerHTML = converter.makeHtml(c.content.replace(/\\/g, "\\\\"));
                 }
                 f.appendChild(name);
                 f.appendChild(content);
