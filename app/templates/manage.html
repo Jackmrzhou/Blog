@@ -22,7 +22,7 @@
 					<td><a href="/p/{{p.id}}">{{p.title}}</a></td>
 					<td>{{p.date.month}}-{{p.date.day}}-{{p.date.year}}</td>
 					<td><input type="button" name="edit-{{p.id}}" value="Edit" class="btn btn-primary" onclick="jump_to_edit({{p.id}})">
-						<input type="submit" name="delete-{{p.id}}" value="Delete" class="btn btn-danger"></td>
+						<input type="submit" name="delete-{{p.id}}" value="Delete" class="btn btn-danger" onclick="confirm_del()"></td>
 				</tr>
 				{% endfor %}
 			</tbody>

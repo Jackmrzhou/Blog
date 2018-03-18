@@ -2,6 +2,14 @@ function jump_to_edit(id){
     window.location.href = "/edit/"+id;
 }
 
+function confirm_del(){
+    if(confirm("Do you really want to Delete?")){
+        document.getElementById("ManageForm").submit();
+        return true;
+    }
+    return false;
+}
+
 function render_post(post){
     $(document).ready(function(){
         if (post.status){

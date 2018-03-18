@@ -114,6 +114,7 @@ def manage():
 	form = forms.ManageForm()
 	if form.validate_on_submit():
 		f = request.form.to_dict()
+		print(f)
 		for k in f:
 			if  f[k] == 'Delete':
 				try:
